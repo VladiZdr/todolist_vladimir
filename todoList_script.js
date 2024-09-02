@@ -7,6 +7,8 @@ let cnt = 0;
 
 addButton.addEventListener("click", function() {
 
+    let change_color = 0;
+
     const newTask = document.createElement("div");
     const newTextBox = document.createElement("input");
     const newMarkButton = document.createElement("button");
@@ -26,7 +28,20 @@ addButton.addEventListener("click", function() {
     newTask.appendChild(newTextBox);
 
     newMarkButton.addEventListener("click",function (){
-        newTextBox.style.color = "red";
+        if(change_color === 0 ){
+            newMarkButton.style.backgroundColor = "red";
+            newTextBox.style.color = "red";
+            newTextBox.style.backgroundColor = "beige";
+            newTextBox.classList.toggle('strikethrough');
+            change_color++;
+        }
+        else {
+            newMarkButton.style.backgroundColor = "darkolivegreen";
+            newTextBox.style.color = "black";
+            newTextBox.style.backgroundColor = "white";
+            newTextBox.style.fontStyle = "normal";
+            change_color = 0;
+        }
     });
 
     container_tasks.appendChild(newTask);
@@ -41,8 +56,6 @@ markButtons.forEach(function (button){
     button.addEventListener("click",function (){
 
         const r = Number(button.id);
-
-
 
     });
 });
