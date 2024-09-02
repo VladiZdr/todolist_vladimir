@@ -1,17 +1,48 @@
 const addButton = document.getElementById("add_task_id");
-const container_tasks = document.getElementById('tasks');
+const markButtons =   document.querySelectorAll(".markButton");
+const container_tasks = document.getElementById("tasks");
 
-addButton.addEventListener('click', function() {
-    console.log("add task");
+let arr = [];
+let cnt = 0;
 
-    const newTextBox = document.createElement('input');
+addButton.addEventListener("click", function() {
 
-    newTextBox.type = 'text';
-    newTextBox.className = 'textbox';
-    newTextBox.placeholder = 'Enter text here';
+    const newTask = document.createElement("div");
+    const newTextBox = document.createElement("input");
+    const newMarkButton = document.createElement("button");
 
-    container_tasks.appendChild(newTextBox);
+    newTask.type = "div";
+    newTask.className = "row";
 
-    console.log("end_of_fun_added_task")
+    newTextBox.type = "text";
+    newTextBox.className = "textbox";
+    newTextBox.placeholder = "Enter text here";
 
+    newMarkButton.type = "button";
+    newMarkButton.className = "markButton";
+    newMarkButton.id = cnt.toString();
+
+    newTask.appendChild(newMarkButton);
+    newTask.appendChild(newTextBox);
+
+    newMarkButton.addEventListener("click",function (){
+        newTextBox.style.color = "red";
+    });
+
+    container_tasks.appendChild(newTask);
+
+    arr.push(cnt++);
+
+    console.log("end_of_fun_added_task");
+
+});
+
+markButtons.forEach(function (button){
+    button.addEventListener("click",function (){
+
+        const r = Number(button.id);
+
+
+
+    });
 });

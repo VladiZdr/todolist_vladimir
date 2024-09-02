@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <style>
-        body {background-color: beige}
+        body {
+            background-color: beige;
+        }
         h1 {
             font-style: italic;
             color: #19706c;
@@ -16,6 +18,7 @@
             border-color: black;
             border-width: thick ;
             font-size: 30px;
+            cursor: pointer;
         }
         .tmp {
             display: flex;
@@ -23,12 +26,26 @@
         }
         .textbox {
             text-align: center;
+            margin-left: 10px;
+            width: 900px;
+            height: 40px;
+            font-size: 18px;
         }
-        .tasks_class{
+        .markButton{
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: medium;
+            border-radius: 20px;
+        }
+        .row{
             display: flex;
             justify-content: center;
+        }
+        #tasks{
+            display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 10px;
         }
     </style>
     <meta charset="UTF-8">
@@ -43,9 +60,10 @@
         <button id="add_task_id" class="add_task">Add Task</button>
     </div>
 
-    <br><br>
+    <br>
+    <br>
 
-    <div id="tasks" class="tasks_class">
+    <div id="tasks" >
 
     </div>
 
