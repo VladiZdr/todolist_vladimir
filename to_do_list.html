@@ -3,20 +3,53 @@
 <head>
     <style>
         body {background-color: beige}
-        h1 {font-style: italic;color: #19706c}
-        button {color: aliceblue;background-color: #19706c;border-color: black;border-width: thick ;font-size: 30px}
+        h1 {
+            font-style: italic;
+            color: #19706c;
+            text-align: center;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        .add_task {
+            color: aliceblue;
+            background-color: #19706c;
+            border-color: black;
+            border-width: thick ;
+            font-size: 30px;
+        }
+        .tmp {
+            display: flex;
+            justify-content: center;
+        }
+        .textbox {
+            text-align: center;
+        }
+        .tasks_class{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
     </style>
     <meta charset="UTF-8">
     <title>My To Do List</title>
 
 </head>
 <body>
-    <script src="todoList_sript.js"> </script>
 
-    <h1> My TODO list</h1>
+    <h1> My TODO list </h1>
 
-    <button onclick="addTask()">Add Task</button>
+    <div class="tmp">
+        <button id="add_task_id" class="add_task">Add Task</button>
+    </div>
 
+    <br><br>
+
+    <div id="tasks" class="tasks_class">
+
+    </div>
+
+    <script src="todoList_script.js"> </script>
 
 </body>
 </html>
