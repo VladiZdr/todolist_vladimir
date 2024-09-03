@@ -1,7 +1,10 @@
 const addButton = document.getElementById("add_task_id");
 const container_tasks = document.getElementById("tasks");
+const currentUser = JSON.parse(localStorage.getItem("currentUser")) || JSON.stringify("Default");
 
 let cnt = 0;
+
+console.log("current user is: "+currentUser);
 
 function createRow(value = ''){
     let change_color = 0;
@@ -16,13 +19,12 @@ function createRow(value = ''){
 
     newTextBox.type = "text";
     newTextBox.className = "textbox";
-    newTextBox.placeholder = "Enter text here";
+    newTextBox.placeholder = "Enter task here";
     newTextBox.value = value;
 
     newMarkButton.type = "button";
     newMarkButton.className = "markButton";
     newMarkButton.id = cnt.toString();
-    newMarkButton.value = change_color.toString();
 
 
     newDeleteButton.type = "button";
@@ -59,20 +61,35 @@ function createRow(value = ''){
         newTask.remove();
         cnt--;
         localStorage.setItem('cnt', JSON.stringify(cnt));
+        if(cnt === 0){
+            let all_usernames = JSON.parse(localStorage.getItem("unames")) || [];
+            all_usernames = all_usernames.filter(e => e !== currentUser);
+            localStorage.setItem("unames",JSON.stringify(all_usernames));
+        }
+        saveTasks();
     });
 
     container_tasks.appendChild(newTask);
     cnt++;
     localStorage.setItem('cnt', JSON.stringify(cnt));
+
+    if(cnt===1){
+        let all_usernames = JSON.parse(localStorage.getItem("unames")) || [];
+        if(!all_usernames.includes(currentUser)){
+            all_usernames.push(currentUser);
+            localStorage.setItem("unames",JSON.stringify(all_usernames));
+        }
+    }
+
     return undefined;
 }
 
 addButton.addEventListener("click", function (){
     createRow();
-    saveRow();
+    saveTasks();
 });
 
-function saveRow(){
+function saveTasks(){
     const tasks_content = document.querySelectorAll("#tasks input");
     const all_tasks = [];
 
@@ -84,7 +101,7 @@ function saveRow(){
 }
 
 container_tasks.addEventListener('input', function() {
-    saveRow();
+    saveTasks();
 });
 
 function loadRows() {
@@ -97,5 +114,6 @@ function loadRows() {
 
 window.addEventListener('load', function() {
     console.log("load old tasks");
+    document.getElementById("header").innerText = currentUser + "'s TODO List";
     loadRows();
 });

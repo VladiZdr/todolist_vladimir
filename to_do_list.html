@@ -7,11 +7,12 @@
         }
         h1 {
             font-style: italic;
-            color: mintcream ;
-            background-color: aqua;
+            color: white ;
+            background-color: lightgreen;
             text-align: center;
             border: 5px solid black;
-
+            padding: 10px;
+            width: 400px;
         }
         .add_task {
             color: aliceblue;
@@ -21,7 +22,7 @@
             font-size: 30px;
             cursor: pointer;
         }
-        .tmp {
+        .center_content {
             display: flex;
             justify-content: center;
         }
@@ -70,14 +71,17 @@
 </head>
 <body>
 
-    <h1> My TODO list </h1>
+    <div class="center_content">
+        <h1 id = "header">  </h1>
+    </div>
 
-    <div class="tmp">
+    <br><br><br>
+
+    <div class="center_content">
         <button id="add_task_id" class="add_task">Add Task</button>
     </div>
 
-    <br>
-    <br>
+    <br><br><br>
 
     <div id="tasks" >
 
