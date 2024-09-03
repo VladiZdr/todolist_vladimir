@@ -116,6 +116,38 @@ function loadRows() {
 
 window.addEventListener('load', function() {
     console.log("load old tasks");
-    document.getElementById("header").innerText = currentUser + "'s TODO List";
+    document.getElementById("header").innerText = currentUser + "'s Monthly Tasks";
     loadRows();
+});
+
+//source Chat_GPT
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the current date
+    const currentDate = new Date();
+
+    // Retrieve the last clear date from localStorage
+    const lastClearDate = localStorage.getItem('lastClearDate');
+
+    // Check if lastClearDate exists in localStorage
+    if (lastClearDate) {
+        // Parse the lastClearDate to a Date object
+        const lastDate = new Date(lastClearDate);
+
+        // Calculate the difference in months
+        const monthsDifference = currentDate.getMonth() - lastDate.getMonth() +
+            (12 * (currentDate.getFullYear() - lastDate.getFullYear()));
+
+        // If a month or more has passed
+        if (monthsDifference >= 1) {
+            // Clear localStorage
+            localStorage.clear();
+            console.log("localStorage cleared");
+
+            // Update lastClearDate to the current date
+            localStorage.setItem('lastClearDate', currentDate.toISOString());
+        }
+    } else {
+        // If no lastClearDate exists, set it to the current date
+        localStorage.setItem('lastClearDate', currentDate.toISOString());
+    }
 });
