@@ -3,6 +3,7 @@ const container_tasks = document.getElementById("tasks");
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || JSON.stringify("Default");
 
 let cnt = 0;
+let key_tasks_content = currentUser + 'tasks_content';
 
 console.log("current user is: "+currentUser);
 
@@ -97,7 +98,7 @@ function saveTasks(){
         all_tasks.push(task.value);
     });
 
-    localStorage.setItem('tasks_content', JSON.stringify(all_tasks));
+    localStorage.setItem(key_tasks_content, JSON.stringify(all_tasks));
 }
 
 container_tasks.addEventListener('input', function() {
@@ -105,7 +106,8 @@ container_tasks.addEventListener('input', function() {
 });
 
 function loadRows() {
-    const savedTasks = JSON.parse(localStorage.getItem('tasks_content')) || [];
+
+    const savedTasks = JSON.parse(localStorage.getItem(key_tasks_content)) || [];
 
     savedTasks.forEach(task => {
         createRow(task);
