@@ -1,4 +1,5 @@
 const loginButton = document.getElementById("login");
+const signupButton = document.getElementById("signup");
 
 loginButton.addEventListener("click", function (){
 
@@ -25,5 +26,11 @@ loginButton.addEventListener("click", function (){
     window.location.href = "to_do_list.html";
 
     console.log("logged in with username " + uname);
+});
+
+signupButton.addEventListener("click", function (){
+
+    window.location.href = "signup_page.html";
+
 })
 

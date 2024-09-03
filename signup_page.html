@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <style>
     body {
       background-color: whitesmoke;
@@ -19,15 +18,26 @@
       display: flex;
       justify-content: center;
     }
-  </style>
+    .error {
+      border: 2px solid red;
+    }
 
+    .error-message {
+      color: red;
+      font-size: 14px;
+      display: none;
+    }
+    #signup{
+      cursor: pointer;
+    }
+    </style>
     <meta charset="UTF-8">
-    <title>Login Page </title>
+    <title>Sign up page</title>
 </head>
 <body>
 
   <div class="center_content">
-    <h1>Login</h1>
+    <h1>Sign up for monthly tasks site</h1>
   </div>
 
   <br><br><br>
@@ -36,6 +46,7 @@
     <label for="uname">Username:</label>
 
     <input type="text" id="uname" name="uname" placeholder="Enter your username" value="Default" required>
+    <span id="error-message" class="error-message">Username is already used.</span>
   </div>
 
   <br>
@@ -49,16 +60,10 @@
   <br><br><br>
 
   <div class="center_content">
-    <button id = "login">Login</button>
-  </div>
-
-  <br>
-
-  <div class="center_content">
     <button id = "signup">Sign up</button>
   </div>
 
-  <script src="login_script.js"> </script>
+  <script src="signup_script.js"></script>
 
 </body>
 </html>
