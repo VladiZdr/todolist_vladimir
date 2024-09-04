@@ -151,3 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem('lastClearDate', currentDate.toISOString());
     }
 });
+
+
+document.getElementById("login-page").addEventListener("click",function () {
+    window.location.href = "login_page.html";
+})

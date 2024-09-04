@@ -19,6 +19,15 @@
       display: flex;
       justify-content: center;
     }
+    .error {
+      border: 2px solid red;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      display: none;
+    }
   </style>
 
     <meta charset="UTF-8">
@@ -31,6 +40,12 @@
   </div>
 
   <br><br><br>
+
+  <div class="center_content">
+    <span id="error-message" class="error-message">Invalid login credentials</span>
+  </div>
+
+  <br>
 
   <div class="center_content">
     <label for="uname">Username:</label>

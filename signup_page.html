@@ -27,7 +27,7 @@
       font-size: 14px;
       display: none;
     }
-    #signup{
+    .button{
       cursor: pointer;
     }
     </style>
@@ -43,24 +43,38 @@
   <br><br><br>
 
   <div class="center_content">
+    <span id="error-message" class="error-message">Username is already used.</span>
+  </div>
+
+  <div class="center_content">
     <label for="uname">Username:</label>
 
     <input type="text" id="uname" name="uname" placeholder="Enter your username" value="Default" required>
-    <span id="error-message" class="error-message">Username is already used.</span>
+
   </div>
 
   <br>
 
   <div class="center_content">
+    <span id="error-message-pass" class="error-message">Invalid password.</span>
+  </div>
+
+  <div class="center_content">
     <label for="password">Password: </label>
 
-    <input type="text" id="password" name="uname" placeholder="Enter your username" value="Default" required>
+    <input type="text" id="password" name="pass" placeholder="Enter your password"  required>
   </div>
 
   <br><br><br>
 
   <div class="center_content">
-    <button id = "signup">Sign up</button>
+    <button id = "signup" class="button">Sign up</button>
+  </div>
+
+  <br><br><br>
+
+  <div class="center_content">
+    <button id = "back_to_login" class="button">Back to login page</button>
   </div>
 
   <script src="signup_script.js"></script>
