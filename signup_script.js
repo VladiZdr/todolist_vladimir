@@ -1,5 +1,5 @@
 const signupButton = document.getElementById("signup");
-const max_number_of_users = 10;
+const max_number_of_users = 2;
 
 //localStorage.clear();
 
@@ -59,7 +59,9 @@ signupButton.addEventListener("click",function (){
     if(bool !== 0){
 
         if(all_unames.length >= max_number_of_users){
-            localStorage.removeItem(all_unames.shift());
+            const removed_user = all_unames.shift();
+            localStorage.removeItem(removed_user);
+            localStorage.removeItem(removed_user + 'tasks_content')
         }
 
         all_unames.push(new_uname);
