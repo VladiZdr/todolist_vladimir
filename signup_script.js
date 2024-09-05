@@ -1,4 +1,5 @@
 const signupButton = document.getElementById("signup");
+const max_number_of_users = 10;
 
 //localStorage.clear();
 
@@ -20,7 +21,7 @@ signupButton.addEventListener("click",function (){
     const errorMessageP = document.getElementById('error-message-pass');
 
     const new_uname = usernameInput.value;
-    const all_unames = JSON.parse(localStorage.getItem("unames")) || [];
+    let all_unames = JSON.parse(localStorage.getItem("unames")) || [];
     let bool = 1;
 
     //If there is already a user with the same username don't allow registration
@@ -54,8 +55,13 @@ signupButton.addEventListener("click",function (){
 
 
 
-    //if uname and pass are valid => update DB
+    //if uname and pass are valid => update DB | max number of users reached => delete first one
     if(bool !== 0){
+
+        if(all_unames.length >= max_number_of_users){
+            localStorage.removeItem(all_unames.shift());
+        }
+
         all_unames.push(new_uname);
 
         localStorage.setItem('unames', JSON.stringify(all_unames));

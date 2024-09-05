@@ -7,8 +7,6 @@ let cnt = 0;
 //key for DB saving currentUser's tasks
 let key_tasks_content = currentUser + 'tasks_content';
 
-console.log("current user is: " + currentUser);
-
 function createRow(value = ''){
     //change_color: boolean for whether the task is completed (to change the style)
     let change_color = 0;
@@ -134,36 +132,3 @@ window.addEventListener('load', function() {
 document.getElementById("login-page").addEventListener("click",function () {
     window.location.href = "login_page.html";
 })
-
-//source Chat_GPT
-//clear DB every Month
-document.addEventListener("DOMContentLoaded", function () {
-    // Get the current date
-    const currentDate = new Date();
-
-    // Retrieve the last clear date from localStorage
-    const lastClearDate = localStorage.getItem('lastClearDate');
-
-    // Check if lastClearDate exists in localStorage
-    if (lastClearDate) {
-        // Parse the lastClearDate to a Date object
-        const lastDate = new Date(lastClearDate);
-
-        // Calculate the difference in months
-        const monthsDifference = currentDate.getMonth() - lastDate.getMonth() +
-            (12 * (currentDate.getFullYear() - lastDate.getFullYear()));
-
-        // If a month or more has passed
-        if (monthsDifference >= 1) {
-            // Clear localStorage
-            localStorage.clear();
-            console.log("localStorage cleared");
-
-            // Update lastClearDate to the current date
-            localStorage.setItem('lastClearDate', currentDate.toISOString());
-        }
-    } else {
-        // If no lastClearDate exists, set it to the current date
-        localStorage.setItem('lastClearDate', currentDate.toISOString());
-    }
-});
