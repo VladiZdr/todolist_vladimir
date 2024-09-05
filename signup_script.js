@@ -2,12 +2,14 @@ const signupButton = document.getElementById("signup");
 
 //localStorage.clear();
 
+//Show Users login credential's
 let all_usernames = JSON.parse(localStorage.getItem("unames")) || [];
-console.log("Usernames in DB:")
+console.log("Users in DB:")
 all_usernames.forEach(u=>{
     const l_credentials = JSON.parse(localStorage.getItem(u)) || [JSON.stringify("error!"),JSON.stringify("error!")];
     console.log("User: " + l_credentials[0] + " with password: " + l_credentials[1]);
 })
+
 
 signupButton.addEventListener("click",function (){
 
@@ -21,6 +23,7 @@ signupButton.addEventListener("click",function (){
     const all_unames = JSON.parse(localStorage.getItem("unames")) || [];
     let bool = 1;
 
+    //If there is already a user with the same username don't allow registration
     all_unames.forEach(username => {
         if (new_uname === username) {
             usernameInput.classList.add('error');
@@ -31,11 +34,13 @@ signupButton.addEventListener("click",function (){
         }
     });
 
+    //If the username is changed to an original username after error message is shown => remove error message
     if(bool === 1){
         usernameInput.classList.remove("error");
         errorMessageU.style.display = 'none';
     }
 
+    //If there is no input for password => error message
     if(passwordInput.value === ""){
         bool = 0;
 
@@ -49,6 +54,7 @@ signupButton.addEventListener("click",function (){
 
 
 
+    //if uname and pass are valid => update DB
     if(bool !== 0){
         all_unames.push(new_uname);
 
